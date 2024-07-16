@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import os
-from dotenv import load_dotenv
 import calendar
 
 # Configuration
