@@ -2,7 +2,7 @@ name: Tennis Court Notifier
 
 on:
   schedule:
-    - cron: '*/60 * * * *'  # Run every day at 8:00 AM UTC (adjust as needed)
+    - cron: '* * * * *'  # Run every day at 8:00 AM UTC (adjust as needed)
 
 jobs:
   collect_data:
