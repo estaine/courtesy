@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime, timedelta
 
 # Configuration
-target_dates = ["2024-07-20", "2024-07-21"]  # Add more dates as needed
+
 target_timeslots = ["18:00", "18:30", "19:00", "19:30", "20:00"]  # Add more timeslots as needed
 target_clubs = ["mera", "wtc"]  # Add more clubs as needed
 
@@ -13,6 +14,23 @@ url_template = "https://kluby.org/{clubName}/grafik?data_grafiku={date}&dyscypli
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
 }
+
+
+def get_next_working_days(num_days):
+    days = []
+    current_date = datetime.utcnow().date()
+
+    while len(days) < num_days:
+        if current_date.weekday() < 5:  # Monday to Friday (0 to 4)
+            days.append(current_date.strftime('%Y-%m-%d'))
+
+        current_date += timedelta(days=1)
+
+    return days[:num_days]
+
+
+target_dates = get_next_working_days(6)  # Add more dates as needed
+
 
 def parse_availability(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
