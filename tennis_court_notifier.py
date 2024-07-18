@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import os
 import calendar
+import psycopg2
+import json
 
 # Configuration
-
 target_timeslots = ["18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"]  # Add more timeslots as needed
-target_clubs = ["mera", "wtc"]  # Add more clubs as needed
 
 # URL template
 url_template = "https://kluby.org/{clubName}/grafik?data_grafiku={date}&dyscyplina=1&strona={page}"
