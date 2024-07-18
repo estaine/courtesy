@@ -2,7 +2,7 @@ name: Tennis Court Notifier
 
 on:
   schedule:
-    - cron: '0 7,14,21 * * *'
+    - cron: '0 8,11,14,17,20 * * *'
   workflow_dispatch:  
 
 jobs:
